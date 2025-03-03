@@ -6,7 +6,6 @@ return {
       require('dashboard').setup {
         -- config
         theme = 'hyper',
-        config = {},
       }
     end,
     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
