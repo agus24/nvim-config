@@ -10,7 +10,22 @@ return {
           transparent = true,
         },
       }
-      vim.cmd 'colorscheme nightfox'
+      -- vim.cmd 'colorscheme nightfox'
+    end,
+  },
+  {
+    'olimorris/onedarkpro.nvim',
+    priority = 1000, -- Ensure it loads first
+    init = function()
+      require('onedarkpro').setup {
+        options = {
+          transparency = true,
+          terminal_colors = false,
+          highlight_inactive_windows = true,
+        },
+      }
+
+      vim.cmd 'colorscheme onedark'
     end,
   },
 }
