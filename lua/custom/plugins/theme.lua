@@ -1,3 +1,7 @@
+local function chooseTheme()
+  vim.cmd 'colorscheme rose-pine'
+end
+
 return {
   {
     'EdenEast/nightfox.nvim',
@@ -10,7 +14,7 @@ return {
           transparent = true,
         },
       }
-      -- vim.cmd 'colorscheme nightfox'
+      chooseTheme()
     end,
   },
   {
@@ -24,8 +28,14 @@ return {
           highlight_inactive_windows = true,
         },
       }
-
-      vim.cmd 'colorscheme onedark'
+      chooseTheme()
+    end,
+  },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    config = function()
+      chooseTheme()
     end,
   },
 }
