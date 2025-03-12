@@ -1,3 +1,14 @@
+-- Indentation fix for Vue/Nuxt components
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*/components/*.vue',
+  callback = function()
+    vim.bo.shiftwidth = 2
+    vim.bo.tabstop = 2
+    vim.bo.softtabstop = 2
+    vim.bo.expandtab = true
+  end,
+})
+
 return {
   -- { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   {
