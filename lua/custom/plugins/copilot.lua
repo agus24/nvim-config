@@ -19,6 +19,9 @@ return {
             dismiss = false,
           },
         },
+        panel = {
+          enabled = true,
+        },
       }
     end,
   },
