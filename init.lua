@@ -552,15 +552,6 @@ require('lazy').setup({
         },
       },
     },
-    setup = {
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        pattern = '*.go',
-        callback = function(args)
-          require('stevearc/conform.nvim').format { bufnr = args.buf }
-          vim.cmd [[retab]] -- convert tabs to spaces after formatting
-        end,
-      }),
-    },
   },
 
   { -- Autocompletion
