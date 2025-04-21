@@ -541,12 +541,25 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        go = { 'goimports', 'gofumpt' },
       },
+      formatters = {
+        goimports = {
+          prepend_args = { '-local', 'yourmodule.com', '-tabs=false', '-tabwidth=4' },
+        },
+        gofumpt = {
+          prepend_args = { '-extra' },
+        },
+      },
+    },
+    setup = {
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = '*.go',
+        callback = function(args)
+          require('stevearc/conform.nvim').format { bufnr = args.buf }
+          vim.cmd [[retab]] -- convert tabs to spaces after formatting
+        end,
+      }),
     },
   },
 
