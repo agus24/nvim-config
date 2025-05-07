@@ -10,6 +10,8 @@ return {
       require('bookmarks').setup {
         keymap = {
           add = '<tab>z',
+          delete = '<tab>d',
+          order = '<space><space>',
         },
       }
       require('telescope').load_extension 'bookmarks'

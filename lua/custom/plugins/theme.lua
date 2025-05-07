@@ -1,5 +1,5 @@
 local function chooseTheme()
-  vim.cmd 'colorscheme nightfox'
+  vim.cmd 'colorscheme rose-pine'
 end
 
 return {
@@ -19,15 +19,19 @@ return {
   },
   {
     'olimorris/onedarkpro.nvim',
+    name = 'onedarkpro',
     priority = 1000, -- Ensure it loads first
-    init = function()
-      require('onedarkpro').setup {
+    config = function()
+      local onedarkpro = require 'onedarkpro'
+
+      onedarkpro.setup {
         options = {
           transparency = true,
-          terminal_colors = false,
-          highlight_inactive_windows = true,
+          -- terminal_colors = false,
+          -- highlight_inactive_windows = true,
         },
       }
+
       chooseTheme()
     end,
   },
