@@ -5,15 +5,22 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
       'antoinemadec/FixCursorHold.nvim', -- Fixes flickering in test results
+      'nvim-neotest/neotest-go',
+    },
+    opts = {
+      status = { virtual_text = true },
+      output = { open_on_run = true },
     },
     config = function()
+      local neotest_ns = vim.api.nvim_create_namespace 'neotest'
       local neotest = require 'neotest'
       neotest.setup {
         adapters = {
-          require 'neotest-phpunit' {
-            phpunit_cmd = function()
-              return 'vendor/bin/phpunit'
-            end,
+          require 'neotest-go' {
+            xperimental = {
+              test_table = true,
+            },
+            args = { '-v' },
           },
         },
       }
@@ -28,7 +35,7 @@ return {
         neotest.summary.toggle()
       end, { desc = 'Toggle test summary' })
       vim.keymap.set('n', '<leader>to', function()
-        neotest.output.open { enter = true }
+        neotest.output.open { enter = true, short = true }
       end, { desc = 'Show test output' })
       vim.keymap.set('n', '<leader>tO', function()
         neotest.output_panel.toggle()
@@ -36,25 +43,6 @@ return {
       vim.keymap.set('n', '<leader>td', function()
         neotest.run.run { strategy = 'dap' }
       end, { desc = 'Debug nearest test' })
-    end,
-  },
-
-  -- PHPUnit Adapter for neotest
-  {
-    'olimorris/neotest-phpunit',
-    dependencies = { 'nvim-neotest/neotest' },
-    config = function()
-      local neotest = require 'neotest'
-      neotest.setup {
-        adapters = {
-          require 'neotest-phpunit' {
-            phpunit_cmd = function()
-              return 'vendor/bin/phpunit' -- Adjust if PHPUnit is installed globally
-            end,
-            filter_dirs = { 'vendor' }, -- Ignore vendor directory
-          },
-        },
-      }
     end,
   },
 }
