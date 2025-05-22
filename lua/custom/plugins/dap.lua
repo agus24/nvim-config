@@ -1,6 +1,12 @@
 return {
   {
     'mfussenegger/nvim-dap',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'williamboman/mason.nvim',
+      'jay-babu/mason-nvim-dap.nvim',
+      'leoluz/nvim-dap-go',
+    },
     config = function()
       local dap = require 'dap'
 
@@ -17,6 +23,30 @@ return {
           name = 'Listen for Xdebug',
           port = 9003,
           log = true,
+        },
+      }
+
+      require('dap-go').setup {
+        delve = {
+          path = 'dlv',
+          initialize_timeout_sec = 20,
+          -- detached = vim.fn.has 'win32' == 0,
+        },
+      }
+
+      dap.configurations.go = {
+        {
+          type = 'go',
+          name = 'Debug',
+          request = 'launch',
+          program = '${file}',
+        },
+        {
+          type = 'go',
+          name = 'Debug Test',
+          request = 'launch',
+          mode = 'test',
+          program = '${file}',
         },
       }
     end,
