@@ -20,6 +20,8 @@ vim.keymap.set('n', '<leader>fp', function()
   print 'Copied path to clipboard!'
 end, { noremap = true, silent = true, desc = 'print file path' })
 
+vim.keymap.set('n', '<tab>s', require('telescope.builtin').lsp_document_symbols, { desc = '[D]ocument [S]ymbols' })
+
 -- neotest
 -- dap
 local dap = require 'dap'
@@ -37,7 +39,6 @@ vim.keymap.set('n', '<leader>do', dap.step_out, { desc = 'Step Out' })
 vim.keymap.set('n', '<F8>', dap.step_out, { desc = 'Step Out' })
 vim.keymap.set('n', '<leader>dr', dap.repl.toggle, { desc = 'Toggle Debug Console' })
 vim.keymap.set('n', '<leader>du', dapui.toggle, { desc = 'Toggle Debug UI' })
-
 vim.keymap.set('n', '<leader>dq', dap.terminate, { desc = 'Stop Debugging' })
 
 return {}

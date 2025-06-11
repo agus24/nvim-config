@@ -6,9 +6,20 @@ return {
       'williamboman/mason.nvim',
       'jay-babu/mason-nvim-dap.nvim',
       'leoluz/nvim-dap-go',
+      'mxsdev/nvim-dap-vscode-js',
+      {
+        'microsoft/vscode-js-debug',
+        version = '1.x',
+        build = 'npm i && npm run compile vsDebugServerBundle && mv dist out',
+      },
     },
     config = function()
       local dap = require 'dap'
+
+      require('dap-vscode-js').setup {
+        debugger_path = vim.fn.stdpath 'data' .. '/lazy/vscode-js-debug',
+        adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+      }
 
       -- PHP Adapter for Xdebug
       dap.adapters.php = {
@@ -39,7 +50,7 @@ return {
           type = 'go',
           name = 'Debug',
           request = 'launch',
-          program = '${file}',
+          program = '${workspaceFolder}',
         },
         {
           type = 'go',
@@ -49,6 +60,32 @@ return {
           program = '${file}',
         },
       }
+
+      for _, language in ipairs { 'vue', 'typescript', 'javascript' } do
+        require('dap').configurations[language] = {
+          {
+            type = 'pwa-node',
+            request = 'attach',
+            processId = require('dap.utils').pick_process,
+            name = 'Attach debugger to existing `node --inspect` process',
+            sourceMaps = true,
+            resolveSourceMapLocations = { '${workspaceFolder}/**', '!**/node_modules/**' },
+            cwd = '${workspaceFolder}',
+            skipFiles = { '${workspaceFolder}/node_modules/**/*.js' },
+          },
+          {
+            type = 'pwa-chrome',
+            request = 'launch',
+            name = 'Launch Chrome at localhost:3000',
+            url = 'http://localhost:3000',
+            webRoot = '${workspaceFolder}',
+            protocol = 'inspector',
+            sourceMaps = true,
+            userDataDir = false,
+            skipFiles = { '**/node_modules/**', '**/@vite/**' },
+          },
+        }
+      end
     end,
   },
   {

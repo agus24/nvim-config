@@ -456,6 +456,21 @@ require('lazy').setup({
         end,
       })
 
+      -- vim.api.nvim_create_autocmd({ 'LspNotify' }, {
+      --   callback = function(args)
+      --     local request = args.data
+      --     local client = vim.lsp.get_client_by_id(args.data.client_id)
+      --
+      --     if client == nil then
+      --       return
+      --     end
+      --
+      --     if client.name == 'phpactor' then
+      --       vim.notify(vim.inspect(request.params), vim.log.levels.TRACE, { title = request.method })
+      --     end
+      --   end,
+      -- })
+
       -- Change diagnostic symbols in the sign column (gutter)
       if vim.g.have_nerd_font then
         local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
