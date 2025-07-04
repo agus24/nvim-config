@@ -8,13 +8,13 @@ return {
     harpoon:setup()
 
     -- Add file to Harpoon
-    vim.keymap.set('n', '<leader>a', function()
-      harpoon:list():append()
+    vim.keymap.set('n', '<leader>ha', function()
+      harpoon:list():add()
     end, { desc = 'Add file to Harpoon' })
 
     vim.keymap.set('n', '<leader>hhd', function()
       harpoon:list():remove()
-    end, { desc = 'Add file to Harpoon' })
+    end, { desc = 'Remove file from Harpoon' })
 
     -- Open Harpoon UI
     vim.keymap.set('n', '<C-e>', function()
@@ -22,16 +22,16 @@ return {
     end, { desc = 'Open Harpoon UI' })
 
     -- Navigation between files
-    vim.keymap.set('n', '<leader>1', function()
+    vim.keymap.set('n', '<leader>h1', function()
       harpoon:list():select(1)
     end, { desc = 'Harpoon to File 1' })
-    vim.keymap.set('n', '<leader>2', function()
+    vim.keymap.set('n', '<leader>h2', function()
       harpoon:list():select(2)
     end, { desc = 'Harpoon to File 2' })
-    vim.keymap.set('n', '<leader>3', function()
+    vim.keymap.set('n', '<leader>h3', function()
       harpoon:list():select(3)
     end, { desc = 'Harpoon to File 3' })
-    vim.keymap.set('n', '<leader>4', function()
+    vim.keymap.set('n', '<leader>h4', function()
       harpoon:list():select(4)
     end, { desc = 'Harpoon to File 4' })
 
