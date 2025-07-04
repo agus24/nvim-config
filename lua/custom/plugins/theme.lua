@@ -1,5 +1,5 @@
 local function chooseTheme()
-  vim.cmd 'colorscheme rose-pine'
+  vim.cmd 'colorscheme kanagawa'
 end
 
 return {
@@ -44,6 +44,23 @@ return {
           transparency = true,
         },
       }
+
+      vim.cmd [[
+        hi DapBreakpoint guifg=#E06C75 guibg=#1E1E1E
+        hi DapLogPoint guifg=#61AFEF guibg=#1E1E1E
+        hi DapStopped guifg=#98C379 guibg=#1E1E1E
+      ]]
+      chooseTheme()
+    end,
+  },
+  {
+    'rebelot/kanagawa.nvim',
+    name = 'kanagawa',
+    config = function()
+      require('kanagawa').setup {
+        transparent = true,
+      }
+
       chooseTheme()
     end,
   },
