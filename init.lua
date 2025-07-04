@@ -156,18 +156,18 @@ require('lazy').setup({
   --    require('gitsigns').setup({ ... })
   --
   -- See `:help gitsigns` to understand what the configuration keys do
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '🟢' },
-        change = { text = '🟥' },
-        delete = { text = '🔴' },
-        topdelete = { text = '🟠' },
-        changedelete = { text = '‼️' },
-      },
-    },
-  },
+  -- { -- Adds git related signs to the gutter, as well as utilities for managing changes
+  --   'lewis6991/gitsigns.nvim',
+  --   opts = {
+  --     signs = {
+  --       add = { text = '🟢' },
+  --       change = { text = '🟥' },
+  --       delete = { text = '🔴' },
+  --       topdelete = { text = '🟠' },
+  --       changedelete = { text = '‼️' },
+  --     },
+  --   },
+  -- },
 
   -- multi tab
 
@@ -487,18 +487,18 @@ require('lazy').setup({
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-      local servers = {
-        volar = { 'vue' },
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-            },
-          },
-        },
-      }
+      -- local servers = {
+      --   volar = { 'vue' },
+      --   lua_ls = {
+      --     settings = {
+      --       Lua = {
+      --         completion = {
+      --           callSnippet = 'Replace',
+      --         },
+      --       },
+      --     },
+      --   },
+      -- }
 
       -- Ensure the servers and tools above are installed
       --
