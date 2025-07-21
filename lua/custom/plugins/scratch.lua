@@ -9,7 +9,7 @@ return {
   config = function()
     require('scratch').setup {
       scratch_file_dir = vim.fn.stdpath 'cache' .. '/scratch.nvim',
-      filetypes = { 'lua', 'js', 'sh', 'ts', 'php', 'sql', 'txt', 'go' },
+      filetypes = { 'lua', 'js', 'sh', 'php', 'sql', 'txt', 'go', 'md' },
     }
   end,
 }

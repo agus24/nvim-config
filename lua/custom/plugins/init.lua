@@ -10,7 +10,6 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 })
 
 return {
-  -- { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   {
     'romgrk/barbar.nvim',
     dependencies = {
@@ -19,6 +18,7 @@ return {
     },
     init = function()
       vim.g.barbar_auto_setup = false
+      require('barbar').setup {}
     end,
     opts = {},
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
