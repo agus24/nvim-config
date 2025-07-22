@@ -4,8 +4,10 @@ return {
     name = 'window-picker',
     event = 'VeryLazy',
     version = '2.*',
-    config = function()
-      require('window-picker').setup()
+    setup = function()
+      require('window-picker').setup {
+        hint = 'floating-big-letter',
+      }
     end,
   },
 }

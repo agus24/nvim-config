@@ -1,5 +1,5 @@
 local function chooseTheme()
-  vim.cmd 'colorscheme kanagawa'
+  vim.cmd 'colorscheme kanagawa-dragon'
 end
 
 return {
@@ -58,6 +58,17 @@ return {
     name = 'kanagawa',
     config = function()
       require('kanagawa').setup {
+        transparent = true,
+      }
+
+      chooseTheme()
+    end,
+  },
+  {
+    'cpea2506/one_monokai.nvim',
+    name = 'one_monokai',
+    config = function()
+      require('one_monokai').setup {
         transparent = true,
       }
 
