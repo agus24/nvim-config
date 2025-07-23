@@ -11,7 +11,7 @@ vim.keymap.set('n', '<Leader>.', '<cmd>Scratch<cr>', { desc = 'Create new scratc
 vim.keymap.set('n', '<Leader>,', '<cmd>ScratchOpen<cr>')
 
 -- neogit
-vim.keymap.set('n', '<Leader>g', '<cmd>Neogit<cr>', { desc = 'Open Neo[G]it' })
+vim.keymap.set('n', '<Leader>gg', '<cmd>Neogit<cr>', { desc = 'Open Neo[G]it' })
 vim.keymap.set('n', '<Leader>tn', '<cmd>ToggleTerm<cr>', { desc = 'Open Terminal' })
 vim.keymap.set('n', '<Leader>ts', '<cmd>ToggleTermSendCurrentLine<cr>', { desc = 'Copy to Terminal' })
 
