@@ -5,7 +5,7 @@ require('mason-lspconfig').setup {
   },
 }
 
-require('lspconfig').gopls.setup {
+vim.lsp.config('gopls', {
   settings = {
     gopls = {
       gofumpt = true,
@@ -15,6 +15,6 @@ require('lspconfig').gopls.setup {
       staticcheck = true,
     },
   },
-}
+})
 
 return {}

@@ -1,6 +1,9 @@
 return {
   {
     'zbirenbaum/copilot.lua',
+    -- requires = {
+    --   'copilotlsp-nvim/copilot-lsp', -- (optional) for NES functionality
+    -- },
     cmd = 'Copilot',
     event = 'InsertEnter',
     config = function()
@@ -21,7 +24,26 @@ return {
         },
         panel = {
           enabled = true,
+          auto_refresh = false,
+          keymap = {
+            jump_prev = '[[',
+            jump_next = ']]',
+            accept = '<CR>',
+            refresh = 'gr',
+            open = '<leader>cp',
+          },
+          layout = {
+            position = 'right',
+          },
         },
+        -- nes = {
+        --   enabled = true,
+        --   keymap = {
+        --     accept_and_goto = '<leader>fs',
+        --     accept = false,
+        --     dismiss = '<Esc>',
+        --   },
+        -- },
       }
     end,
   },
