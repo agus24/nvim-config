@@ -1,5 +1,5 @@
 local function chooseTheme()
-  vim.cmd 'colorscheme kanagawa-dragon'
+  vim.cmd 'colorscheme cobalt'
 end
 
 return {
@@ -70,6 +70,19 @@ return {
     config = function()
       require('one_monokai').setup {
         transparent = true,
+      }
+
+      chooseTheme()
+    end,
+  },
+  {
+    'wurli/cobalt.nvim',
+    name = 'cobalt',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('cobalt').setup {
+        -- transparent = true,
       }
 
       chooseTheme()

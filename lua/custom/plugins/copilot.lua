@@ -54,11 +54,11 @@ return {
     },
     build = 'make tiktoken',
     opts = {
-      model = 'gpt-4.1', -- AI model to use
+      model = 'claude-3.5-sonnet', -- AI model to use
       temperature = 0.1, -- Lower = focused, higher = creative
       window = {
-        layout = 'vertical', -- 'vertical', 'horizontal', 'float'
-        width = 0.25, -- 50% of screen width
+        layout = 'float', -- 'vertical', 'horizontal', 'float'
+        width = 0.15, -- 50% of screen width
         border = 'rounded', -- 'rounded', 'double', 'single', 'shadow', 'none'
       },
       headers = {
@@ -74,15 +74,17 @@ return {
       vim.api.nvim_create_autocmd('BufEnter', {
         pattern = 'copilot-*',
         callback = function()
-          vim.opt_local.relativenumber = false
-          vim.opt_local.number = false
+          vim.opt_local.relativenumber = true
+          vim.opt_local.number = true
           vim.opt_local.conceallevel = 0
         end,
       })
-      vim.keymap.set('n', '<leader>cc', '<cmd>CopilotChatOpen<cr>', { desc = 'Open Copilot Chat' })
+
       -- In your colorscheme or init.lua
       vim.api.nvim_set_hl(0, 'CopilotChatHeader', { fg = '#7C3AED', bold = true })
       vim.api.nvim_set_hl(0, 'CopilotChatSeparator', { fg = '#374151' })
+
+      vim.keymap.set('n', '<leader>cc', '<cmd>CopilotChatToggle<cr>', { desc = 'Toggle Copilot Chat' })
     end,
   },
 }
