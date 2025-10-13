@@ -54,37 +54,54 @@ return {
     },
     build = 'make tiktoken',
     opts = {
-      model = 'claude-3.5-sonnet', -- AI model to use
+      model = 'gpt-4.1', -- AI model to use
       temperature = 0.1, -- Lower = focused, higher = creative
       window = {
-        layout = 'float', -- 'vertical', 'horizontal', 'float'
-        width = 0.15, -- 50% of screen width
-        border = 'rounded', -- 'rounded', 'double', 'single', 'shadow', 'none'
+        layout = 'vertical', -- 'vertical', 'horizontal', 'float'
+        width = 0.5, -- 50% of screen width
       },
-      headers = {
-        user = '👤 You',
-        assistant = '🤖 Copilot',
-        tool = '🔧 Tool',
-      },
-      separator = '━━',
-      auto_fold = true, -- Automatically folds non-assistant messages
       auto_insert_mode = true, -- Enter insert mode when opening
     },
     config = function()
-      vim.api.nvim_create_autocmd('BufEnter', {
-        pattern = 'copilot-*',
-        callback = function()
-          vim.opt_local.relativenumber = true
-          vim.opt_local.number = true
-          vim.opt_local.conceallevel = 0
-        end,
-      })
+      vim.keymap.set('n', '<leader>cc', '<cmd>CopilotChatToggle<cr>', { desc = 'Toggle copilot chat' })
+    end,
+  },
+  {
+    'ravitemer/mcphub.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    priority = 1000,
+    build = 'npm install -g mcp-hub@latest', -- Installs `mcp-hub` node binary globally
+    config = function()
+      require('mcphub').setup {
+        extensions = {
+          copilotchat = {
+            enabled = true,
+            convert_tools_to_functions = true, -- Convert MCP tools to CopilotChat functions
+            convert_resources_to_functions = true, -- Convert MCP resources to CopilotChat functions
+            add_mcp_prefix = true, -- Add "mcp_" prefix to function names
+          },
+          mcphub = {
+            auto_refresh = true,
+            callback = 'mcphub.extensions.codecompanion',
+            opts = {
+              -- MCP Tools
+              make_tools = true, -- Make individual tools (@server__tool) and server groups (@server) from MCP servers
+              show_server_tools_in_chat = true, -- Show individual tools in chat completion (when make_tools=true)
+              add_mcp_prefix_to_tool_names = true, -- Add mcp__ prefix (e.g `@mcp__github`, `@mcp__neovim__list_issues`)
+              show_result_in_chat = true, -- Show tool results directly in chat buffer
+              format_tool = nil, -- function(tool_name:string, tool: CodeCompanion.Agent.Tool) : string Function to format tool names to show in the chat buffer
+              -- MCP Resources
+              make_vars = true, -- Convert MCP resources to #variables for prompts
+              -- MCP Prompts
+              make_slash_commands = true, -- Add MCP prompts as /slash commands
+            },
+          },
+        },
+      }
 
-      -- In your colorscheme or init.lua
-      vim.api.nvim_set_hl(0, 'CopilotChatHeader', { fg = '#7C3AED', bold = true })
-      vim.api.nvim_set_hl(0, 'CopilotChatSeparator', { fg = '#374151' })
-
-      vim.keymap.set('n', '<leader>cc', '<cmd>CopilotChatToggle<cr>', { desc = 'Toggle Copilot Chat' })
+      vim.keymap.set('n', '<leader>cm', '<cmd>MCPHub<cr>', { desc = 'Toggle MCP Hub' })
     end,
   },
 }
