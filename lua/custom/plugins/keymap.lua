@@ -2,11 +2,13 @@
 vim.keymap.set('n', 'H', '<Cmd>BufferPrevious<CR>', { desc = 'Move to previous buffer' })
 vim.keymap.set('n', 'L', '<Cmd>BufferNext<CR>', { desc = 'Move to next buffer' })
 -- vim.keymap.set('n', '<Leader>bd', '<Cmd>BufferClose<CR>', { desc = 'Close current buffer' })
-vim.keymap.set('n', '<Leader>bd', '<Cmd>BufferClose<CR>', { desc = 'Close current buffer' })
+-- vim.keymap.set('n', '<Leader>bd', '<Cmd>BufferClose<CR>', { desc = 'Close current buffer' })
 vim.keymap.set('n', '<c-q>', '<Cmd>BufferClose<CR>', { desc = 'Close current buffer' })
 vim.keymap.set('v', '<leader>p', '"0p', { noremap = true, silent = true, desc = 'Paste last yanked text' })
 
 vim.keymap.set('n', ' ', '<Nop>', { desc = 'Search File', silent = false })
+vim.keymap.set('n', 'q:', '<Nop>', { desc = 'disabled', silent = false })
+vim.keymap.set('n', '<c-s>', '<Cmd>:w<CR>', { desc = 'save', silent = false })
 
 -- scratch
 vim.keymap.set('n', '<Leader>.', '<cmd>Scratch<cr>', { desc = 'Create new scratch' })

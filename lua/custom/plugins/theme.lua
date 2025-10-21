@@ -1,5 +1,5 @@
 local function chooseTheme()
-  vim.cmd 'colorscheme cobalt'
+  vim.cmd 'colorscheme one_monokai'
 end
 
 return {
