@@ -19,8 +19,8 @@ return {
     init = function()
       vim.g.barbar_auto_setup = false
       require('barbar').setup {
-        -- animation = true,
-        -- insert_at_start = true,
+        animation = true,
+        insert_at_start = true,
       }
     end,
     opts = {},
