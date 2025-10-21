@@ -64,6 +64,7 @@ return {
     },
     config = function()
       vim.keymap.set('n', '<leader>cc', '<cmd>CopilotChatToggle<cr>', { desc = 'Toggle copilot chat' })
+      vim.keymap.set('n', '<leader>cp', '<cmd>CopilotChatPrompts<cr>', { desc = 'Show custom prompt' })
     end,
   },
   {
