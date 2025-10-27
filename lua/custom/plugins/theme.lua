@@ -1,8 +1,25 @@
-local function chooseTheme()
-  vim.cmd 'colorscheme one_monokai'
-end
+-- local function chooseTheme()
+--   vim.cmd 'colorscheme one_monokai'
+-- end
 
 return {
+  {
+    'zaldih/themery.nvim',
+    lazy = false,
+    config = function()
+      require('themery').setup {
+        themes = {
+          'nightfox',
+          'rose-pine',
+          'kanagawa',
+          'cobalt',
+          -- 'nekonight',
+          'one_monokai',
+        },
+        livePreview = true,
+      }
+    end,
+  },
   {
     'EdenEast/nightfox.nvim',
     name = 'nightfox',
@@ -11,28 +28,9 @@ return {
 
       nightfox.setup {
         options = {
-          transparent = true,
+          -- transparent = true,
         },
       }
-      chooseTheme()
-    end,
-  },
-  {
-    'olimorris/onedarkpro.nvim',
-    name = 'onedarkpro',
-    priority = 1000, -- Ensure it loads first
-    config = function()
-      local onedarkpro = require 'onedarkpro'
-
-      onedarkpro.setup {
-        options = {
-          transparency = true,
-          -- terminal_colors = false,
-          -- highlight_inactive_windows = true,
-        },
-      }
-
-      chooseTheme()
     end,
   },
   {
@@ -41,7 +39,7 @@ return {
     config = function()
       require('rose-pine').setup {
         styles = {
-          transparency = true,
+          -- transparency = true,
         },
       }
 
@@ -50,7 +48,6 @@ return {
         hi DapLogPoint guifg=#61AFEF guibg=#1E1E1E
         hi DapStopped guifg=#98C379 guibg=#1E1E1E
       ]]
-      chooseTheme()
     end,
   },
   {
@@ -58,10 +55,8 @@ return {
     name = 'kanagawa',
     config = function()
       require('kanagawa').setup {
-        transparent = true,
+        -- transparent = true,
       }
-
-      chooseTheme()
     end,
   },
   {
@@ -69,10 +64,8 @@ return {
     name = 'one_monokai',
     config = function()
       require('one_monokai').setup {
-        transparent = true,
+        -- transparent = true,
       }
-
-      chooseTheme()
     end,
   },
   {
@@ -84,8 +77,25 @@ return {
       require('cobalt').setup {
         -- transparent = true,
       }
-
-      chooseTheme()
+    end,
+  },
+  {
+    'neko-night/nvim',
+    name = 'nekonight',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('nekonight').setup {
+        on_colors = function(colors)
+          colors.bg = 'none'
+          colors.fg = '#c6c8d1'
+        end,
+        on_highlights = function(highlights, colors)
+          highlights.Normal = { fg = colors.fg, bg = 'none' }
+          highlights.SignColumn = { fg = colors.fg, bg = 'none' }
+        end,
+        transparent = true,
+      }
     end,
   },
 }
