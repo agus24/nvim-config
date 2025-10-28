@@ -19,9 +19,17 @@ return {
     init = function()
       vim.g.barbar_auto_setup = false
       require('barbar').setup {
-        animation = true,
-        insert_at_start = true,
+        animation = false,
+        auto_hide = true,
+        tabpages = true,
       }
+      vim.api.nvim_create_autocmd({ 'User' }, {
+        pattern = 'PersistedSavePre',
+        group = vim.api.nvim_create_augroup('PersistedHooks', {}),
+        callback = function()
+          vim.api.nvim_exec_autocmds('User', { pattern = 'SessionSavePre' })
+        end,
+      })
     end,
     opts = {},
     version = '^1.0.0', -- optional: only update when a new 1.x version is released

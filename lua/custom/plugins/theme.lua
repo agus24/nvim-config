@@ -17,22 +17,23 @@ return {
           'one_monokai',
         },
         livePreview = true,
+        -- transparent = true,
       }
     end,
   },
-  {
-    'EdenEast/nightfox.nvim',
-    name = 'nightfox',
-    init = function()
-      local nightfox = require 'nightfox'
-
-      nightfox.setup {
-        options = {
-          -- transparent = true,
-        },
-      }
-    end,
-  },
+  -- {
+  --   'EdenEast/nightfox.nvim',
+  --   name = 'nightfox',
+  --   init = function()
+  --     local nightfox = require 'nightfox'
+  --
+  --     nightfox.setup {
+  --       options = {
+  --         -- transparent = true,
+  --       },
+  --     }
+  --   end,
+  -- },
   {
     'rose-pine/neovim',
     name = 'rose-pine',
@@ -50,15 +51,15 @@ return {
       ]]
     end,
   },
-  {
-    'rebelot/kanagawa.nvim',
-    name = 'kanagawa',
-    config = function()
-      require('kanagawa').setup {
-        -- transparent = true,
-      }
-    end,
-  },
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   name = 'kanagawa',
+  --   config = function()
+  --     require('kanagawa').setup {
+  --       -- transparent = true,
+  --     }
+  --   end,
+  -- },
   {
     'cpea2506/one_monokai.nvim',
     name = 'one_monokai',
@@ -68,34 +69,15 @@ return {
       }
     end,
   },
-  {
-    'wurli/cobalt.nvim',
-    name = 'cobalt',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('cobalt').setup {
-        -- transparent = true,
-      }
-    end,
-  },
-  {
-    'neko-night/nvim',
-    name = 'nekonight',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('nekonight').setup {
-        on_colors = function(colors)
-          colors.bg = 'none'
-          colors.fg = '#c6c8d1'
-        end,
-        on_highlights = function(highlights, colors)
-          highlights.Normal = { fg = colors.fg, bg = 'none' }
-          highlights.SignColumn = { fg = colors.fg, bg = 'none' }
-        end,
-        transparent = true,
-      }
-    end,
-  },
+  -- {
+  --   'wurli/cobalt.nvim',
+  --   name = 'cobalt',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require('cobalt').setup {
+  --       -- transparent = true,
+  --     }
+  --   end,
+  -- },
 }

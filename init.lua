@@ -223,6 +223,9 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
         },
+        persisted = {
+          layout_config = { width = 0.55, height = 0.55 },
+        },
       }
 
       -- Enable Telescope extensions if they are installed
