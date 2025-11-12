@@ -4,11 +4,13 @@ vim.keymap.set('n', 'L', '<Cmd>BufferNext<CR>', { desc = 'Move to next buffer' }
 -- vim.keymap.set('n', '<Leader>bd', '<Cmd>BufferClose<CR>', { desc = 'Close current buffer' })
 -- vim.keymap.set('n', '<Leader>bd', '<Cmd>BufferClose<CR>', { desc = 'Close current buffer' })
 vim.keymap.set('n', '<c-q>', '<Cmd>BufferClose<CR>', { desc = 'Close current buffer' })
-vim.keymap.set('v', '<leader>p', '"0p', { noremap = true, silent = true, desc = 'Paste last yanked text' })
+vim.keymap.set('v', '<leader>p', '"0p', { silent = true, desc = 'Paste last yanked text' })
 
 vim.keymap.set('n', ' ', '<Nop>', { desc = 'Search File', silent = false })
 vim.keymap.set('n', 'q:', '<Nop>', { desc = 'disabled', silent = false })
-vim.keymap.set('n', '<c-s>', '<Cmd>:w<CR>', { desc = 'save', silent = false })
+vim.keymap.set('n', '<leader>wq', '<c-w>q', { desc = 'close window' })
+vim.keymap.set('n', '<c-m>', '<c-w>>', { desc = 'increase window width' })
+vim.keymap.set('n', '<c-n>', '<c-w><', { desc = 'decrease window width' })
 
 -- scratch
 vim.keymap.set('n', '<Leader>.', '<cmd>Scratch<cr>', { desc = 'Create new scratch' })
@@ -20,10 +22,12 @@ vim.keymap.set('n', '<Leader>tn', '<cmd>ToggleTerm<cr>', { desc = 'Open Terminal
 vim.keymap.set('n', '<Leader>ts', '<cmd>ToggleTermSendCurrentLine<cr>', { desc = 'Copy to Terminal' })
 vim.keymap.set('n', '<Leader>sl', '<cmd>Telescope persisted<cr>', { desc = 'Open sessions' })
 
-vim.keymap.set('n', '<leader>fp', function()
+vim.keymap.set('n', '<leader>ll', '<cmd>Lazy<cr>', { desc = '[L]azy Pane[L]' })
+
+vim.keymap.set('n', '<leader>sp', function()
   vim.fn.setreg('+', vim.fn.expand '%:p')
   print 'Copied path to clipboard!'
-end, { noremap = true, silent = true, desc = 'print file path' })
+end, { silent = true, desc = 'print file path' })
 
 vim.keymap.set('n', '<tab>s', require('telescope.builtin').lsp_document_symbols, { desc = '[D]ocument [S]ymbols' })
 

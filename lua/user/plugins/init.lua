@@ -9,6 +9,11 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   end,
 })
 
+-- for neovide
+-- vim.g.neovide_cursor_animation_length = 0.1
+-- vim.g.neovide_cursor_trail_size = 0.3
+-- vim.g.neovide_scroll_animation_length = 0.3
+
 return {
   {
     'romgrk/barbar.nvim',
@@ -19,8 +24,8 @@ return {
     init = function()
       vim.g.barbar_auto_setup = false
       require('barbar').setup {
-        animation = false,
-        auto_hide = true,
+        animation = true,
+        auto_hide = false,
         tabpages = true,
       }
       vim.api.nvim_create_autocmd({ 'User' }, {
