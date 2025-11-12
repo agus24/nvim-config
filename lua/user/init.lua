@@ -62,7 +62,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     error('Error cloning lazy.nvim:\n' .. out)
   end
 end ---@diagnostic disable-next-line: undefined-field
-
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
@@ -102,3 +101,5 @@ require('lazy').setup({
     },
   },
 })
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
