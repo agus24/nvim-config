@@ -9,10 +9,10 @@ return {
     config = function()
       require('themery').setup {
         themes = {
-          'nightfox',
+          -- 'nightfox',
           'rose-pine',
           'kanagawa',
-          'cobalt',
+          -- 'cobalt',
           -- 'nekonight',
           'one_monokai',
         },
@@ -21,19 +21,6 @@ return {
       }
     end,
   },
-  -- {
-  --   'EdenEast/nightfox.nvim',
-  --   name = 'nightfox',
-  --   init = function()
-  --     local nightfox = require 'nightfox'
-  --
-  --     nightfox.setup {
-  --       options = {
-  --         -- transparent = true,
-  --       },
-  --     }
-  --   end,
-  -- },
   {
     'rose-pine/neovim',
     name = 'rose-pine',
@@ -51,15 +38,15 @@ return {
       ]]
     end,
   },
-  -- {
-  --   'rebelot/kanagawa.nvim',
-  --   name = 'kanagawa',
-  --   config = function()
-  --     require('kanagawa').setup {
-  --       -- transparent = true,
-  --     }
-  --   end,
-  -- },
+  {
+    'rebelot/kanagawa.nvim',
+    name = 'kanagawa',
+    config = function()
+      require('kanagawa').setup {
+        -- transparent = true,
+      }
+    end,
+  },
   {
     'cpea2506/one_monokai.nvim',
     name = 'one_monokai',
@@ -69,15 +56,4 @@ return {
       }
     end,
   },
-  -- {
-  --   'wurli/cobalt.nvim',
-  --   name = 'cobalt',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require('cobalt').setup {
-  --       -- transparent = true,
-  --     }
-  --   end,
-  -- },
 }
