@@ -2,7 +2,7 @@ return {
   {
     'zbirenbaum/copilot.lua',
     dependencies = {
-      'copilotlsp-nvim/copilot-lsp', -- (optional) for NES functionality
+      -- 'copilotlsp-nvim/copilot-lsp', -- (optional) for NES functionalitycopilot
     },
     cmd = 'Copilot',
     event = 'InsertEnter',
@@ -39,7 +39,7 @@ return {
         nes = {
           enabled = false,
           keymap = {
-            accept_and_goto = '<leader>gp',
+            accept_and_goto = '<leader>ny',
             accept = false,
             dismiss = '<Esc>',
           },
@@ -54,7 +54,7 @@ return {
     },
     build = 'make tiktoken',
     opts = {
-      model = 'gpt-4.1', -- AI model to use
+      model = 'gpt-5.1', -- AI model to use
       temperature = 0.1, -- Lower = focused, higher = creative
       window = {
         layout = 'vertical', -- 'vertical', 'horizontal', 'float'
