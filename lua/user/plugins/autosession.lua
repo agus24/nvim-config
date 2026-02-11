@@ -11,7 +11,8 @@ return {
       on_autoload_no_session = function()
         vim.notify 'No existing session to load.'
       end,
-      save_dir = vim.fn.expand(vim.fn.stdpath 'data' .. '/sessions/'), -- Resolves to ~/.local/share/nvim/sessions/
+      -- Resolves to ~/.local/share/nvim/sessions/
+      save_dir = vim.fn.expand(vim.fn.stdpath 'data' .. '/sessions/'),
     },
     setup = function() end,
   },

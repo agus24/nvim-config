@@ -1,5 +1,14 @@
 return {
   {
+    'nvim-dap-virtual-text',
+    config = {
+      enabled = true,
+      commented = true,
+      only_first_definition = true,
+      all_references = false,
+    },
+  },
+  {
     'mfussenegger/nvim-dap',
     dependencies = {
       'nvim-neotest/nvim-nio',
