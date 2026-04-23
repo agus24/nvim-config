@@ -1,26 +1,23 @@
+-- with lazy.nvim
 return {
-  'tomasky/bookmarks.nvim',
-  opts = {
-    -- sign_priority = 8,  --set bookmark sign priority to cover other sign
-    save_file = vim.fn.expand '$HOME/.bookmarks', -- bookmarks save file path
-    keywords = {
-      ['@t'] = '☑️ ', -- mark annotation startswith @t ,signs this icon as `Todo`
-      ['@w'] = '⚠️ ', -- mark annotation startswith @w ,signs this icon as `Warn`
-      ['@f'] = '⛏ ', -- mark annotation startswith @f ,signs this icon as `Fix`
-      ['@n'] = ' ', -- mark annotation startswith @n ,signs this icon as `Note`
-    },
-    on_attach = function()
-      local bm = require 'bookmarks'
-      require('telescope').load_extension 'bookmarks'
-
-      local map = vim.keymap.set
-      map('n', 'mm', bm.bookmark_toggle) -- add or remove bookmark at current line
-      map('n', 'mi', bm.bookmark_ann) -- add or edit mark annotation at current line
-      map('n', 'mc', bm.bookmark_clean) -- clean all marks in local buffer
-      map('n', 'mn', bm.bookmark_next) -- jump to next mark in local buffer
-      map('n', 'mp', bm.bookmark_prev) -- jump to previous mark in local buffer
-      map('n', 'ml', require('telescope').extensions.bookmarks.list) -- show marked file list in quickfix window
-      map('n', 'mx', bm.bookmark_clear_all) -- removes all bookmarks
-    end,
+  'LintaoAmons/bookmarks.nvim',
+  -- pin the plugin at specific version for stability
+  -- backup your bookmark sqlite db when there are breaking changes (major version change)
+  tag = '3.2.0',
+  dependencies = {
+    { 'kkharji/sqlite.lua' },
+    { 'nvim-telescope/telescope.nvim' }, -- currently has only telescopes supported, but PRs for other pickers are welcome
+    { 'stevearc/dressing.nvim' }, -- optional: better UI
+    { 'GeorgesAlkhouri/nvim-aider' }, -- optional: for Aider integration
   },
+  config = function()
+    local opts = {} -- check the "./lua/bookmarks/default-config.lua" file for all the options
+    require('bookmarks').setup(opts) -- you must call setup to init sqlite db
+
+    vim.keymap.set({ 'n', 'v' }, 'mm', '<cmd>BookmarksMark<cr>', { desc = 'Mark current line into active BookmarkList.' })
+    vim.keymap.set({ 'n', 'v' }, 'mo', '<cmd>BookmarksGoto<cr>', { desc = 'Go to bookmark at current active BookmarkList' })
+    vim.keymap.set({ 'n', 'v' }, 'ma', '<cmd>BookmarksCommands<cr>', { desc = 'Find and trigger a bookmark command.' })
+  end,
 }
+
+-- run :BookmarksInfo to see the running status of the plugin
