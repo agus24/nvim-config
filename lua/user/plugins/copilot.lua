@@ -67,42 +67,4 @@ return {
       vim.keymap.set('n', '<leader>cp', '<cmd>CopilotChatPrompts<cr>', { desc = 'Show custom prompt' })
     end,
   },
-  {
-    'ravitemer/mcphub.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    priority = 1000,
-    build = 'npm install -g mcp-hub@latest', -- Installs `mcp-hub` node binary globally
-    config = function()
-      require('mcphub').setup {
-        extensions = {
-          copilotchat = {
-            enabled = true,
-            convert_tools_to_functions = true, -- Convert MCP tools to CopilotChat functions
-            convert_resources_to_functions = true, -- Convert MCP resources to CopilotChat functions
-            add_mcp_prefix = true, -- Add "mcp_" prefix to function names
-          },
-          mcphub = {
-            auto_refresh = true,
-            callback = 'mcphub.extensions.codecompanion',
-            opts = {
-              -- MCP Tools
-              make_tools = true, -- Make individual tools (@server__tool) and server groups (@server) from MCP servers
-              show_server_tools_in_chat = true, -- Show individual tools in chat completion (when make_tools=true)
-              add_mcp_prefix_to_tool_names = true, -- Add mcp__ prefix (e.g `@mcp__github`, `@mcp__neovim__list_issues`)
-              show_result_in_chat = true, -- Show tool results directly in chat buffer
-              format_tool = nil, -- function(tool_name:string, tool: CodeCompanion.Agent.Tool) : string Function to format tool names to show in the chat buffer
-              -- MCP Resources
-              make_vars = true, -- Convert MCP resources to #variables for prompts
-              -- MCP Prompts
-              make_slash_commands = true, -- Add MCP prompts as /slash commands
-            },
-          },
-        },
-      }
-
-      vim.keymap.set('n', '<leader>cm', '<cmd>MCPHub<cr>', { desc = 'Toggle MCP Hub' })
-    end,
-  },
 }
