@@ -51,6 +51,8 @@ return {
         'vim',
         'vimdoc',
         'blade',
+        'go',
+        'php',
       }
       local alreadyInstalled = require('nvim-treesitter.config').get_installed()
       local parsersToInstall = vim
