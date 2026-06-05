@@ -1,6 +1,7 @@
 -- with lazy.nvim
 return {
   'LintaoAmons/bookmarks.nvim',
+  enabled = false,
   -- pin the plugin at specific version for stability
   -- backup your bookmark sqlite db when there are breaking changes (major version change)
   tag = '3.2.0',
